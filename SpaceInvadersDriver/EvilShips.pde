@@ -1,37 +1,37 @@
-public class EvilShips extends Ships {
+public class EvilShips {
   
   // column x and y - not actual x and y
   private int colX;
   private int rowY;
+
+  // actual x and actual y
+  private int xLoc;
+  private int yLoc;
   
-  // team
-  private String team;
-  
-  // 
+  // bullet speed
+  private int bulletSpeed;
   
   
   public EvilShips(int colX, int rowY) {
     this.colX = colX;
     this.rowY = rowY;
-    team = enemy;
+    xLoc = colX * shipDiameter;
+    yLoc = rowY * shipDiameter;
   }
   
-  @Override
-  public void setXY() {
-    
+  public void setActualXY(int x, int y) {
+    xLoc = x;
+    yLoc = y;
   }
   
-  @Override
   public PVector getXY() {
     return new PVector();
   }
   
-  @Override
-  public void killShip() {
+  public void shipGetsHit() {
     
   }
   
-  @Override
   public void sendAttack() {
     
   }

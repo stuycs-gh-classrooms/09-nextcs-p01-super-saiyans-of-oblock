@@ -5,11 +5,14 @@
 boolean isPaused;
 boolean isGameOver;
 PlayerShip pShip;
-Ships[][] eShips;
-public String enemy = "enemy";
-public String player = "player";
+EvilShips[][] enemyShips;
+public final String enemy = "enemy";
+public final String player = "player";
 int livesLeft;
 PVector initialPlayerPos;
+color backgroundC;
+public final int shipDiameter = 20;
+
 
 
 // setup
@@ -18,7 +21,8 @@ void setup() {
   isPaused = false;
   isGameOver = false;
   // did this cause ima make each ship 20 pixels diameter
-  eShips = new Ships[width/20][height/20];
+  enemyShips = new EvilShips[width/20][height/20];
+  
   createPlayerShip(pShip);
   setupBoard();
 }
@@ -41,11 +45,11 @@ void draw() {
 
 // setup the board
 void setupBoard() {
-  background(10);
+  background(backgroundC);
 }
 
-// background
-void changeBackground() {
+// animate background with stars and stuff
+void animateBackground() {
   
 }
 

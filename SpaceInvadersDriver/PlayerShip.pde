@@ -1,36 +1,28 @@
-public class PlayerShip extends Ships {
+public class PlayerShip {
   
-  // column x and y - not actual x and y
-  private int colX;
-  private int rowY;
-  
-  // team
-  private String team;
+  // actual x and y
+  private int x;
+  private int y;
   
   // 
   
-  public PlayerShip(int colX, int rowY) {
-    this.colX = colX;
-    this.rowY = rowY;
-    team = player;
+  public PlayerShip(int x, int y) {
+    this.x = x;
+    this.y = y;
   }
   
-  @Override
   public void setXY() {
     
   }
   
-  @Override
   public PVector getXY() {
-     return new PVector(colX,rowY);
+     return new PVector(x,y);
   }
   
-  @Override
-  public void killShip() {
+  public void shipGetsHit() {
     
   }
   
-  @Override
   public void sendAttack() {
     
   }
