@@ -8,10 +8,6 @@ public class EvilShips {
   private int xLoc;
   private int yLoc;
   
-  // bullet speed
-  private int bulletSpeed;
-  
-  
   public EvilShips(int colX, int rowY) {
     this.colX = colX;
     this.rowY = rowY;
@@ -25,7 +21,11 @@ public class EvilShips {
   }
   
   public PVector getXY() {
-    return new PVector();
+    return new PVector(xLoc,yLoc);
+  }
+  
+  public void drawShip() {
+    
   }
   
   public void shipGetsHit() {
