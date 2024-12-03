@@ -1,6 +1,0 @@
-/*
-
-deleted abstract parent class
-
-
-*/
