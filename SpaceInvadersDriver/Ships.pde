@@ -10,4 +10,6 @@ public abstract class Ships {
   
   public abstract void killShip();
   
+  public abstract void sendAttack();
+  
 }
