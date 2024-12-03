@@ -27,23 +27,26 @@ Working enemy movement, working player movement and shooting, death functionalit
 ### Extra Features
 What are some features that are not essential to the program, but you would like to see (provided you have time after completing the necessary features. Theses can be customizations that are not part of the core requirements.
 
-Different enemy types, pausing
+Different enemy types, pausing, scaling enemy stats, endless waves of enemies
 
 ### Array Usage
 How will you be using arrays in this project?
 
 1D Array:
-- YOUR ANSER HERE
+- stores background stars
 
 2D Array:
-- YOUR ANSWER HERE
+- Stores enemy ships in a grid pattern
 
 
 ### Controls
 How will your program be controlled? List all keyboard commands and mouse interactions.
 
 Keyboard Commands:
-- LIST OF COMMANDS HERE
+- UP DOWN LEFT RIGHT: player movement
+- SPACE: shoot
+- R: Reset
+- P: Pause
 
 Mouse Control:
 - Mouse movement:
@@ -53,14 +56,31 @@ Mouse Control:
 ### Classes
 What classes will you be creating for this project? Include the instance variables and methods that you believe you will need. You will be required to create at least 2 different classes. If you are going to use classes similar to those we've made for previous assignments, you will have to add new features to them.
 
-CLASS NAME0
+EvilShips
 - Instance variables:
-  - LIST INSTANCE VARS HERE
+  - int ColX: Stores position within the grid of enemies
+  - int RowY: Stores position within the grid of enemies
+  - int xloc: Stores position in the screen
+  - int yloc: Stores position in the screen
+  - int bulletSpeed: controls the speed of the bullet
 - METHODS
-  - LIST METHODS HERE
+  - void setActualXY(int x, int y): updates the location variables of the ship with the parameters
+  -  PVector getXY(): returns XY cords of the ship
+  -  void sendBullet(int speed): shoots a projectile with a given speed towards the player
 
-CLASS NAME1
+PlayerShip
 - Instance variables:
-  - LIST INSTANCE VARS HERE
+  - int xloc: Stores position in the screen
+  - int yloc: Stores position in the screen
+  - int bulletSpeed: controls the speed of the bullet
 - METHODS
-  - LIST METHODS HERE
+  - void setActualXY(int x, int y): updates the location variables of the ship with the parameters
+  -  PVector getXY(): returns XY cords of the ship
+  -  void sendBullet(int speed): shoots a projectile with a given speed towards the enemies
+ 
+Projectile
+ Instance variables:
+  - int speed: speed of projectile
+  - color color: color of projectile
+- METHODS
+  - 
