@@ -61,6 +61,9 @@ public class EvilShips {
   public void manageProjectile() {
     if (p!=null) {
       p.move();
+      if (p.getXY().y >= height) {
+        createAttack();
+      }
     } else {
       createAttack();
     }

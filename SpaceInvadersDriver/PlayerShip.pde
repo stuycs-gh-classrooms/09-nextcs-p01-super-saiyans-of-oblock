@@ -34,13 +34,22 @@ public class PlayerShip {
   public void createAttack() {
     for (int c=0;c<spots.length;c++) {
       if (spots[c]==null) {
-        spots[c] = new Projectile(x,y-projectileDiameter,ppSpeed,projectileDiameter);
+        spots[c] = new Projectile(x,y-pDiameter,ppSpeed,pDiameter);
       }
     }
   }
   
   public void manageAttack() {
-    
+    for (int c=0;c<spots.length;c++) {
+      if (spots[c]!=null) {
+        spots[c].move();
+        if (spots[c].getXY().y <= 0) {
+          spots[c] = null;
+        }
+      } else {
+        createAttack();
+      }
+    }
   }
   
   public void drawShip() {

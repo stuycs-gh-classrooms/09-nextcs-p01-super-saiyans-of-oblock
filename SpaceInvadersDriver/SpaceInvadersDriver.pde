@@ -24,7 +24,6 @@ void setup() {
   size(400,400);
   isPaused = false;
   isGameOver = false;
-  // did this cause ima make each ship 20 pixels diameter
   enemyShips = new EvilShips[4][10];
   livesLeft = 4;
   initialPlayerPos = new PVector(width/2, height - shipDiameter);
