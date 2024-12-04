@@ -39,9 +39,9 @@ public class EvilShips {
     xLoc-shipDiameter/2,yLoc-shipDiameter/2);
   }
   
-  void moveShip(PVector distance) {
-    xLoc += distance.x;
-    yLoc += distance.y;
+  void moveShip(int xAdd, int yAdd) {
+    xLoc += xAdd;
+    yLoc += yAdd;
   }
   
   public boolean shipGetsHit(Projectile[] p) {

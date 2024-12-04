@@ -49,7 +49,7 @@ void draw() {
   if (!isPaused && !isGameOver) {
     
     animate();
-    if (frameCount%120==0) {moveEnemyShips();}
+    if (frameCount%120==0) {moveEnemyShips();System.out.println("lol");}
     processCollisions(enemyShips);
     
     
@@ -141,9 +141,9 @@ void moveEnemyShips() {
     for (int c=0;c<enemyShips[r].length;c++) {
       if (enemyShips[r][c]!=null) {
         if (goDown) {
-          enemyShips[r][c].moveShip(new PVector(0,shipDiameter));
+          enemyShips[r][c].moveShip(0,shipDiameter);
         }
-        enemyShips[r][c].moveShip(new PVector(shipDiameter * enemySpeedDirection,0));
+        enemyShips[r][c].moveShip(shipDiameter * enemySpeedDirection,0);
       }
     }
   }
@@ -179,11 +179,11 @@ void keyPressed() {
     }
   }
   if (pShip!=null && !isPaused && !isGameOver) {
-    if (keyCode==LEFT) {
-      
+    if (keyCode==LEFT && pShip.getXY().x >= shipDiameter) {
+      pShip.moveX(-shipDiameter/2);
     }
-    if (keyCode==RIGHT) {
-      
+    if (keyCode==RIGHT && pShip.getXY().x <= width - shipDiameter) {
+      pShip.moveX(shipDiameter/2);
     }
   }
 }

@@ -24,11 +24,12 @@ public class PlayerShip {
   
   public boolean shipGetsHit(Projectile p) {
     boolean isHit = false;
+    if (p!=null) {
     int xDiff = (int)Math.abs(p.getXY().x - x);
     int yDiff = (int)Math.abs(p.getXY().y - y);
-    if (xDiff <= p.getDiameter()/*/2*/ && yDiff <= p.getDiameter()/*/2*/) {
+    if (xDiff <= p.getDiameter() && yDiff <= p.getDiameter()) {
       isHit = true;
-    }
+    }}
     return isHit;
   }
   
@@ -55,13 +56,17 @@ public class PlayerShip {
   
   public void drawShip() {
     fill(playerColor);
-    triangle(x,y+shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
+    triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
     /*fill(backgroundC);
     triangle();*/
   }
   
   public Projectile[] getProjectiles() {
     return spots;
+  }
+  
+  public void moveX(int distance) {
+    x += distance;
   }
   
 }
