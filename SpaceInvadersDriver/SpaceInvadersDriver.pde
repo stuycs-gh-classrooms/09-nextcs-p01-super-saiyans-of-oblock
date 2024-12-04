@@ -48,8 +48,9 @@ void draw() {
   // if game is unpaused and not lost
   if (!isPaused && !isGameOver) {
     
-    animateBackground();
-    if (frameCount%30==0) {moveEnemyShips();}
+    animate();
+    if (frameCount%120==0) {moveEnemyShips();}
+    processCollisions(enemyShips);
     
     
     
@@ -61,8 +62,14 @@ void draw() {
 }
 
 // animate background with stars and stuff
-void animateBackground() {
+void animate() {
   background(backgroundC);
+  for (int r=0;r<enemyShips.length;r++) {
+    for (int c=0;c<enemyShips[r].length;c++) {
+      if (enemyShips[r][c]!=null) {enemyShips[r][c].drawShip();}
+    }
+  }
+  if (pShip!=null) {pShip.drawShip();}
 }
 
 // instantiate enemy ships
@@ -76,12 +83,11 @@ void spawnEnemyShips(EvilShips[][] b) {
 
 // screen if you lose
 void loseScreen() {
-  
-}
-
-// deals with when player hit
-void playerHit() {
-  
+  background(255,0,0);
+  textAlign(CENTER,CENTER);
+  fill(255);
+  textSize(width/20);
+  text("You lose-click r to reset",width/2,height/2);
 }
 
 // if game paused
@@ -96,7 +102,7 @@ void processCollisions(EvilShips[][] g) {
     for (int c=0;c<g[r].length;c++) {
       if (g[r][c]!=null && pShip!=null) {
         if (g[r][c].shipGetsHit(pShip.getProjectiles())) {
-          
+          g[r][c] = null;
         }
       }
     }
@@ -143,6 +149,22 @@ void moveEnemyShips() {
   }
 }
 
+void manageTheProjectiles() {
+  // enemy ones
+  for (int r=0;r<enemyShips.length;r++) {
+    for (int c=0;c<enemyShips[r].length;c++) {
+      if (enemyShips[r][c]!=null) {
+        enemyShips[r][c].manageProjectile();
+      }
+    }
+  }
+  // player ones
+  if (pShip!=null) {
+    for (int c=0;c<pShip.getProjectiles().length;c++) {
+      pShip.manageAttack();
+    }
+  }
+}
 
 // key pressed
 void keyPressed() {
@@ -154,6 +176,14 @@ void keyPressed() {
       isPaused = false;
     } else if (isPaused==false) {
       isPaused = true;
+    }
+  }
+  if (pShip!=null && !isPaused && !isGameOver) {
+    if (keyCode==LEFT) {
+      
+    }
+    if (keyCode==RIGHT) {
+      
     }
   }
 }
