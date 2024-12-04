@@ -38,11 +38,11 @@ public class EvilShips {
   public boolean shipGetsHit(Projectile[] p) {
     boolean didGetHit = false;
     for (int c=0;c<p.length;c++) {
-      if (p[c]!=null) {
+      if (p[c]!=null && p[c].getTeam()==player) {
         int xDifference = (int)Math.abs(p[c].getXY().x - xLoc);
         int yDifference = (int)Math.abs(p[c].getXY().y - yLoc);
         if (xDifference <= p[c].getDiameter()/2 && yDifference <= p[c].getDiameter()/2) {
-          
+          didGetHit = true;
         }
           
       }

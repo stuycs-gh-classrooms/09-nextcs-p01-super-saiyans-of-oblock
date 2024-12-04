@@ -26,6 +26,15 @@ public class Projectile {
     y += pSpeed;
   }
   
+  public String getTeam() {
+    // if bullet sent by player, return player - else enemy
+    if (pSpeed <= 0) {
+      return player;
+    } else {
+      return enemy;
+    }
+  }
+  
   // get coords
   public PVector getXY() {
     return new PVector(x,y);
