@@ -141,7 +141,7 @@ void moveEnemyShips() {
     for (int c=0;c<enemyShips[r].length;c++) {
       if (enemyShips[r][c]!=null) {
         if (goDown) {
-          enemyShips[r][c].moveShip(0,shipDiameter);
+          enemyShips[r][c].moveShip(0,shipDiameter); // gotta fix this method and the encompassing
         }
         enemyShips[r][c].moveShip(shipDiameter * enemySpeedDirection,0);
       }
