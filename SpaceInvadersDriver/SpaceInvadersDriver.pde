@@ -15,6 +15,9 @@ public final int shipDiameter = 20;
 public color playerColor;
 public color enemyColor;
 public color projectileColor;
+public int epSpeed; // enemy projectile speed
+public int ppSpeed; // player projectile speed
+public int pDiameter; // projectile diameter
 
 // setup
 void setup() {
@@ -29,8 +32,11 @@ void setup() {
   playerColor = color(#64FFC8);
   enemyColor = color(#FF1978);
   projectileColor = color(#C8C8FF);
+  pDiameter = 5;
   spawnEnemyShips(enemyShips);
   background(backgroundC);
+  epSpeed = 5;
+  ppSpeed = -5;
 }
 
 // draw
@@ -88,10 +94,37 @@ void gamePaused() {
   
 }
 
+// process collissions of both sides
+void processCollisions(Projectile p, EvilShips[][] g, PlayerShip player) {
+  // evil ship
+  for (int r=0;r<g.length;r++) {
+    for (int c=0;c<g[r].length;c++) {
+      if (g[r][c]!=null) {
+        
+      }
+    }
+  }
+  // player
+  
+}
+
+void moveProjectiles() {
+  
+}
+
 
 // key pressed
 void keyPressed() {
-  
+  if (key=='r') {
+    setup();
+  }
+  if (key=='p') {
+    if (isPaused) {
+      isPaused = false;
+    } else if (isPaused==false) {
+      isPaused = true;
+    }
+  }
 }
 
 // mouse input

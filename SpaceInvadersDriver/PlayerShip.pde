@@ -4,9 +4,13 @@ public class PlayerShip {
   private int x;
   private int y;
   
+  // projectiles
+  private Projectile[] spots;
+  
   public PlayerShip(int x, int y) {
     this.x = x;
     this.y = y;
+    spots = new Projectile[30]; // have 30 projectiles
   }
   
   public void setXY() {
@@ -17,16 +21,32 @@ public class PlayerShip {
      return new PVector(x,y);
   }
   
-  public void shipGetsHit() {
-    
+  public boolean shipGetsHit(Projectile p) {
+    boolean isHit = false;
+    int xDiff = (int)Math.abs(p.getXY().x - x);
+    int yDiff = (int)Math.abs(p.getXY().y - y);
+    if (xDiff <= p.getDiameter()/*/2*/ && yDiff <= p.getDiameter()/*/2*/) {
+      isHit = true;
+    }
+    return isHit;
   }
   
-  public void sendAttack() {
+  public void createAttack() {
+    for (int c=0;c<spots.length;c++) {
+      
+    }
+  }
+  
+  public void manageAttack() {
     
   }
   
   public void drawShip() {
     
+  }
+  
+  public Projectile[] getProjectiles() {
+    return spots;
   }
   
 }

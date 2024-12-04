@@ -8,6 +8,10 @@ public class EvilShips {
   private int xLoc;
   private int yLoc;
   
+  // array for projectiles shot from this spaceship # spots is arbitrary but gives time for it to shoot
+  private Projectile p;
+  
+  
   public EvilShips(int colX, int rowY) {
     this.colX = colX;
     this.rowY = rowY;
@@ -50,8 +54,16 @@ public class EvilShips {
     return didGetHit;
   }
   
-  public void sendAttack() {
-    
+  private void createAttack() {
+    p = new Projectile(xLoc,yLoc + shipDiameter/2, epSpeed,pDiameter);
+  }
+  
+  public void manageProjectile() {
+    if (p!=null) {
+      p.move();
+    } else {
+      createAttack();
+    }
   }
   
   
