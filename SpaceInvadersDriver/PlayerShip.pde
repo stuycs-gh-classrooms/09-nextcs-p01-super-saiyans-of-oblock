@@ -25,4 +25,8 @@ public class PlayerShip {
     
   }
   
+  public void drawShip() {
+    
+  }
+  
 }

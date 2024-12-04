@@ -12,6 +12,9 @@ int livesLeft;
 PVector initialPlayerPos;
 final color backgroundC = color(10);
 public final int shipDiameter = 20;
+public color playerColor;
+public color enemyColor;
+public 
 
 
 
@@ -25,8 +28,10 @@ void setup() {
   livesLeft = 4;
   initialPlayerPos = new PVector(width/2, height - shipDiameter);
   createPlayerShip(pShip);
+  playerColor = color(#64FFC8);
+  enemyColor = color(#FF0000);
   spawnEnemyShips(enemyShips);
-  setupBoard();
+  background(backgroundC);
 }
 
 // draw
@@ -45,19 +50,23 @@ void draw() {
   }
 }
 
-// setup the board
+/*// setup the board
 void setupBoard() {
   background(backgroundC);
-}
+}*/
 
 // animate background with stars and stuff
 void animateBackground() {
   background(backgroundC);
 }
 
-// creates enemy ships
+// instantiate enemy ships
 void spawnEnemyShips(EvilShips[][] b) {
-  
+  for (int r=0;r<b.length;r++) {
+    for (int c=0;c<b[r].length;c++) {
+      b[r][c] = new EvilShips(c,r);
+    }
+  }
 }
 
 // moves enemy ships

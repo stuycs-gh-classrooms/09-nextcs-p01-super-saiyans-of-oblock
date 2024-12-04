@@ -5,11 +5,13 @@ public class Projectile {
   int y;
   int pSpeed; // negative goes upwards
   // i want to add angle eventually xd what do you think vincent - edgar
+  int diameter;
   
-  public Projectile(int x, int y, int speed) {
+  public Projectile(int x, int y, int speed, int diameter) {
     this.x = x;
     this.y = y;
     pSpeed = speed;
+    this.diameter = diameter; // want to add this so you can charge up bigger attacks / send smaller ones
   }
   
   // draws it
@@ -26,6 +28,10 @@ public class Projectile {
   // get coords
   public PVector getXY() {
     return new PVector(x,y);
+  }
+  
+  public int getDiameter() {
+    return diameter;
   }
   
   
