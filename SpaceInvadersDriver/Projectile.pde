@@ -16,7 +16,8 @@ public class Projectile {
   
   // draws it
   public void drawProjectile() {
-    
+    fill(projectileColor);
+    circle(x,y,diameter);
   }
   
   // moves it

@@ -14,9 +14,7 @@ final color backgroundC = color(10);
 public final int shipDiameter = 20;
 public color playerColor;
 public color enemyColor;
-public 
-
-
+public color projectileColor;
 
 // setup
 void setup() {
@@ -29,7 +27,8 @@ void setup() {
   initialPlayerPos = new PVector(width/2, height - shipDiameter);
   createPlayerShip(pShip);
   playerColor = color(#64FFC8);
-  enemyColor = color(#FF0000);
+  enemyColor = color(#FF1978);
+  projectileColor = color(#C8C8FF);
   spawnEnemyShips(enemyShips);
   background(backgroundC);
 }
