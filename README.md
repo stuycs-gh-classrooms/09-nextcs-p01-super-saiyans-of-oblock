@@ -33,10 +33,10 @@ Different enemy types, pausing, scaling enemy stats, endless waves of enemies
 How will you be using arrays in this project?
 
 1D Array:
-- stores background stars
+* stores background stars
 
 2D Array:
-- Stores enemy ships in a grid pattern
+* Stores enemy ships in a grid pattern
 
 
 ### Controls
