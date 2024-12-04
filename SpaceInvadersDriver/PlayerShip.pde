@@ -4,8 +4,6 @@ public class PlayerShip {
   private int x;
   private int y;
   
-  // 
-  
   public PlayerShip(int x, int y) {
     this.x = x;
     this.y = y;

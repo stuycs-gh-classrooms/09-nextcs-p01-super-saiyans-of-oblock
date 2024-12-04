@@ -20,7 +20,7 @@ public class EvilShips {
     yLoc = y;
   }
   
-  public PVector getXY() {
+  public PVector getActualXY() {
     return new PVector(xLoc,yLoc);
   }
   
