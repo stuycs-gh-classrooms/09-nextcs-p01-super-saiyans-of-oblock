@@ -49,11 +49,6 @@ void draw() {
   }
 }
 
-/*// setup the board
-void setupBoard() {
-  background(backgroundC);
-}*/
-
 // animate background with stars and stuff
 void animateBackground() {
   background(backgroundC);
