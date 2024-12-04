@@ -41,7 +41,7 @@ public class EvilShips {
       if (p[c]!=null && p[c].getTeam()==player) {
         int xDifference = (int)Math.abs(p[c].getXY().x - xLoc);
         int yDifference = (int)Math.abs(p[c].getXY().y - yLoc);
-        if (xDifference <= p[c].getDiameter()/2 && yDifference <= p[c].getDiameter()/2) {
+        if (xDifference <= p[c].getDiameter()/*/2*/ && yDifference <= p[c].getDiameter()/*/2*/) {
           didGetHit = true;
         }
           
@@ -53,5 +53,6 @@ public class EvilShips {
   public void sendAttack() {
     
   }
+  
   
 }
