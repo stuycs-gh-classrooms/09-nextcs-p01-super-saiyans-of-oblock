@@ -1,8 +1,8 @@
 public class EvilShips {
   
-  // column x and y - not actual x and y
+  /*// column x and y - not actual x and y
   private int colX;
-  private int rowY;
+  private int rowY;*/
 
   // actual x and actual y
   private int xLoc;
@@ -13,8 +13,8 @@ public class EvilShips {
   
   
   public EvilShips(int colX, int rowY) {
-    this.colX = colX;
-    this.rowY = rowY;
+    /*this.colX = colX;
+    this.rowY = rowY;*/
     xLoc = colX * shipDiameter;
     yLoc = rowY * shipDiameter;
   }
@@ -37,6 +37,10 @@ public class EvilShips {
     triangle(xLoc,yLoc+shipDiameter/4,
     xLoc+shipDiameter/2,yLoc-shipDiameter/2,
     xLoc-shipDiameter/2,yLoc-shipDiameter/2);
+  }
+  
+  void moveShip() {
+    
   }
   
   public boolean shipGetsHit(Projectile[] p) {

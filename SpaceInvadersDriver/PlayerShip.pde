@@ -13,8 +13,9 @@ public class PlayerShip {
     spots = new Projectile[30]; // have 30 projectiles
   }
   
-  public void setXY() {
-    
+  public void setXY(int x, int y) {
+    this.x = x;
+    this.y = y;
   }
   
   public PVector getXY() {
@@ -53,7 +54,10 @@ public class PlayerShip {
   }
   
   public void drawShip() {
-    
+    fill(playerColor);
+    triangle(x,y+shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
+    /*fill(backgroundC);
+    triangle();*/
   }
   
   public Projectile[] getProjectiles() {

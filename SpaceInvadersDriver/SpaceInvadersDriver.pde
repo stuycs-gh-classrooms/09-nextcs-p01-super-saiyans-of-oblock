@@ -27,7 +27,7 @@ void setup() {
   enemyShips = new EvilShips[4][10];
   livesLeft = 4;
   initialPlayerPos = new PVector(width/2, height - shipDiameter);
-  createPlayerShip(pShip);
+  pShip = new PlayerShip(width/2, height - shipDiameter);
   playerColor = color(#64FFC8);
   enemyColor = color(#FF1978);
   projectileColor = color(#C8C8FF);
@@ -36,6 +36,7 @@ void setup() {
   background(backgroundC);
   epSpeed = 5;
   ppSpeed = -5;
+  frameRate(60);
 }
 
 // draw
@@ -43,6 +44,7 @@ void draw() {
   // if game is unpaused and not lost
   if (!isPaused && !isGameOver) {
     
+    animateBackground();
     
     
     
@@ -69,8 +71,12 @@ void spawnEnemyShips(EvilShips[][] b) {
 }
 
 // moves enemy ships
-void moveEnemyShips() {
-  
+void manageEnemyShips() {
+  for (int r=0;r<enemyShips.length;r++) {
+    for (int c=0;c<enemyShips[r].length;c++) {
+      
+    }
+  }
 }
 
 // screen if you lose
@@ -78,12 +84,7 @@ void loseScreen() {
   
 }
 
-// just new player ship - no points lost
-void createPlayerShip(PlayerShip pLol) {
-  pLol = new PlayerShip((int)initialPlayerPos.x,(int)initialPlayerPos.y);
-}
-
-// what to do when your player ship gets hit
+// deals with when player hit
 void playerHit() {
   
 }
