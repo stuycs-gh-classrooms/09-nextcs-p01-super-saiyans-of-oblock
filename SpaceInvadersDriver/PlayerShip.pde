@@ -33,7 +33,9 @@ public class PlayerShip {
   
   public void createAttack() {
     for (int c=0;c<spots.length;c++) {
-      
+      if (spots[c]==null) {
+        spots[c] = new Projectile(x,y-projectileDiameter,ppSpeed,projectileDiameter);
+      }
     }
   }
   
