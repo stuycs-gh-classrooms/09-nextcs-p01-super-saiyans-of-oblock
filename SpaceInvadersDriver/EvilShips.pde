@@ -15,8 +15,8 @@ public class EvilShips {
   public EvilShips(int colX, int rowY) {
     /*this.colX = colX;
     this.rowY = rowY;*/
-    xLoc = colX * shipDiameter;
-    yLoc = rowY * shipDiameter;
+    xLoc = (colX+1) * shipDiameter;
+    yLoc = (1+rowY) * shipDiameter;
   }
   
   public void setXY(int x, int y) {
@@ -39,8 +39,9 @@ public class EvilShips {
     xLoc-shipDiameter/2,yLoc-shipDiameter/2);
   }
   
-  void moveShip() {
-    
+  void moveShip(PVector distance) {
+    xLoc += distance.x;
+    yLoc += distance.y;
   }
   
   public boolean shipGetsHit(Projectile[] p) {
@@ -71,6 +72,10 @@ public class EvilShips {
     } else {
       createAttack();
     }
+  }
+  
+  public Projectile getProjectile() {
+    return p;
   }
   
   

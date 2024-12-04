@@ -10,11 +10,13 @@ public final String enemy = "enemy";
 public final String player = "player";
 int livesLeft;
 PVector initialPlayerPos;
-final color backgroundC = color(10);
+final color backgroundC = color(100);
 public final int shipDiameter = 20;
 public color playerColor;
 public color enemyColor;
 public color projectileColor;
+public int enemyShipSpeed;
+public int enemySpeedDirection;
 public int epSpeed; // enemy projectile speed
 public int ppSpeed; // player projectile speed
 public int pDiameter; // projectile diameter
@@ -30,6 +32,8 @@ void setup() {
   pShip = new PlayerShip(width/2, height - shipDiameter);
   playerColor = color(#64FFC8);
   enemyColor = color(#FF1978);
+  enemyShipSpeed = 2;
+  enemyShipSpeed = 1;
   projectileColor = color(#C8C8FF);
   pDiameter = 5;
   spawnEnemyShips(enemyShips);
@@ -45,7 +49,7 @@ void draw() {
   if (!isPaused && !isGameOver) {
     
     animateBackground();
-    
+    if (frameCount%30==0) {moveEnemyShips();}
     
     
     
@@ -70,15 +74,6 @@ void spawnEnemyShips(EvilShips[][] b) {
   }
 }
 
-// moves enemy ships
-void manageEnemyShips() {
-  for (int r=0;r<enemyShips.length;r++) {
-    for (int c=0;c<enemyShips[r].length;c++) {
-      
-    }
-  }
-}
-
 // screen if you lose
 void loseScreen() {
   
@@ -95,21 +90,57 @@ void gamePaused() {
 }
 
 // process collissions of both sides
-void processCollisions(Projectile p, EvilShips[][] g, PlayerShip player) {
-  // evil ship
+void processCollisions(EvilShips[][] g) {
+  // evil ships
   for (int r=0;r<g.length;r++) {
     for (int c=0;c<g[r].length;c++) {
-      if (g[r][c]!=null) {
-        
+      if (g[r][c]!=null && pShip!=null) {
+        if (g[r][c].shipGetsHit(pShip.getProjectiles())) {
+          
+        }
       }
     }
   }
   // player
-  
+  for (int r=0;r<enemyShips.length;r++) {
+    for (int c=0;c<enemyShips[r].length;c++) {
+      if (pShip!=null&&pShip.shipGetsHit(enemyShips[r][c].getProjectile())) {
+        livesLeft--;
+        if (livesLeft<=0) {
+          loseScreen();
+        }
+      }
+    }
+  }
 }
 
-void moveProjectiles() {
-  
+void moveEnemyShips() {
+  boolean goDown = false;
+  for (int r=0;r<enemyShips.length;r++) {
+    for (int c=0;c<enemyShips[r].length;c++) {
+      if (enemyShips[r][c]!=null) {
+        if (enemyShips[r][c].getXY().x < shipDiameter) {
+          enemySpeedDirection = 1;
+          goDown = true;
+          System.out.println("go right");
+        } else if (enemyShips[r][c].getXY().x > width - shipDiameter) {
+          enemySpeedDirection = -1;
+          goDown = true;
+          System.out.println("go left");
+        }
+      }
+    }
+  }
+  for (int r=0;r<enemyShips.length;r++) {
+    for (int c=0;c<enemyShips[r].length;c++) {
+      if (enemyShips[r][c]!=null) {
+        if (goDown) {
+          enemyShips[r][c].moveShip(new PVector(0,shipDiameter));
+        }
+        enemyShips[r][c].moveShip(new PVector(shipDiameter * enemySpeedDirection,0));
+      }
+    }
+  }
 }
 
 
