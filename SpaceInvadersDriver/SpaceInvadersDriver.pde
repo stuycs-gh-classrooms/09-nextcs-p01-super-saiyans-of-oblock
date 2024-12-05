@@ -32,7 +32,8 @@ void setup() {
   pShip = new PlayerShip(width/2, height - shipDiameter);
   playerColor = color(#64FFC8);
   enemyColor = color(#FF1978);
-  enemyShipSpeed = 2;
+  //enemyShipSpeed = 2;
+  enemySpeedDirection = 1;
   enemyShipSpeed = 1;
   projectileColor = color(#C8C8FF);
   pDiameter = 5;
@@ -48,11 +49,10 @@ void draw() {
   // if game is unpaused and not lost
   if (!isPaused && !isGameOver) {
     
-    animate();
-    if (frameCount%120==0) {moveEnemyShips();System.out.println("lol");}
+    if (frameCount%40==0) {moveEnemyShips();System.out.println("lol");}
     processCollisions(enemyShips);
-    
-    
+    managePlayerAttack();
+    animate();
     
   } else if (isPaused) {
     gamePaused();
@@ -110,7 +110,7 @@ void processCollisions(EvilShips[][] g) {
   // player
   for (int r=0;r<enemyShips.length;r++) {
     for (int c=0;c<enemyShips[r].length;c++) {
-      if (pShip!=null&&pShip.shipGetsHit(enemyShips[r][c].getProjectile())) {
+      if (pShip!=null&&enemyShips[r][c]!=null&&pShip.shipGetsHit(enemyShips[r][c].getProjectile())) {
         livesLeft--;
         if (livesLeft<=0) {
           loseScreen();
@@ -143,6 +143,7 @@ void moveEnemyShips() {
         if (goDown) {
           enemyShips[r][c].moveShip(0,shipDiameter); // gotta fix this method and the encompassing
         }
+        System.out.println("should have moved");
         enemyShips[r][c].moveShip(shipDiameter * enemySpeedDirection,0);
       }
     }
@@ -158,12 +159,22 @@ void manageTheProjectiles() {
       }
     }
   }
-  // player ones
+  /*// player ones
   if (pShip!=null) {
     for (int c=0;c<pShip.getProjectiles().length;c++) {
       pShip.manageAttack();
     }
+  }*/
+}
+
+void managePlayerAttack() {
+  if (pShip!=null) {
+    pShip.manageAttack();
   }
+}
+
+void sendPlayerAttack() {
+  if (pShip!=null) {pShip.createAttack();}
 }
 
 // key pressed
@@ -178,13 +189,22 @@ void keyPressed() {
       isPaused = true;
     }
   }
+  // regular here
   if (pShip!=null && !isPaused && !isGameOver) {
+    
+    
+    
     if (keyCode==LEFT && pShip.getXY().x >= shipDiameter) {
       pShip.moveX(-shipDiameter/2);
     }
     if (keyCode==RIGHT && pShip.getXY().x <= width - shipDiameter) {
       pShip.moveX(shipDiameter/2);
     }
+    if (key == ' ') {
+      sendPlayerAttack();
+    }
+    
+    
   }
 }
 

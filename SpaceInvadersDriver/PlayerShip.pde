@@ -37,6 +37,7 @@ public class PlayerShip {
     for (int c=0;c<spots.length;c++) {
       if (spots[c]==null) {
         spots[c] = new Projectile(x,y-pDiameter,ppSpeed,pDiameter);
+        //spots[c].drawProjectile();
       }
     }
   }
@@ -48,21 +49,22 @@ public class PlayerShip {
         if (spots[c].getXY().y <= 0) {
           spots[c] = null;
         }
+        if (spots[c]!=null) {spots[c].drawProjectile();}
       } else {
         createAttack();
       }
     }
   }
   
+  public Projectile[] getProjectiles() {
+    return spots;
+  }
+  
   public void drawShip() {
     fill(playerColor);
     triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
     /*fill(backgroundC);
-    triangle();*/
-  }
-  
-  public Projectile[] getProjectiles() {
-    return spots;
+    triangle();*/ 
   }
   
   public void moveX(int distance) {

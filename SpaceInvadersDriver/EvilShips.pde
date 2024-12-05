@@ -42,6 +42,8 @@ public class EvilShips {
   void moveShip(int xAdd, int yAdd) {
     xLoc += xAdd;
     yLoc += yAdd;
+    System.out.println(xLoc);
+    System.out.println(yLoc);
   }
   
   public boolean shipGetsHit(Projectile[] p) {
@@ -69,6 +71,7 @@ public class EvilShips {
       if (p.getXY().y >= height) {
         createAttack();
       }
+      p.drawProjectile();
     } else {
       createAttack();
     }
