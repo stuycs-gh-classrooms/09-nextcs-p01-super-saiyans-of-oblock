@@ -133,6 +133,7 @@ void processCollisions(EvilShips[][] g) {
   }
 }
 
+// move enemy ships
 void moveEnemyShips() {
   boolean goDown = false;
   for (int r=0;r<enemyShips.length;r++) {
