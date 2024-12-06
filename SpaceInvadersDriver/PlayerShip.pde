@@ -25,11 +25,12 @@ public class PlayerShip {
   public boolean shipGetsHit(Projectile p) {
     boolean isHit = false;
     if (p!=null) {
-    int xDiff = (int)Math.abs(p.getXY().x - x);
-    int yDiff = (int)Math.abs(p.getXY().y - y);
-    if (xDiff <= p.getDiameter() && yDiff <= p.getDiameter()) {
-      isHit = true;
-    }}
+      int xDiff = (int)Math.abs(p.getXY().x - x);
+      int yDiff = (int)Math.abs(p.getXY().y - y);
+      if (xDiff <= p.getDiameter()*1.5 && yDiff <= p.getDiameter()*1.5) {
+        isHit = true;
+      }
+    }
     return isHit;
   }
   
@@ -38,6 +39,8 @@ public class PlayerShip {
       if (spots[c]==null) {
         spots[c] = new Projectile(x,y-pDiameter,ppSpeed,pDiameter);
         //spots[c].drawProjectile();
+        System.out.println("create attack before print");
+        return;
       }
     }
   }
