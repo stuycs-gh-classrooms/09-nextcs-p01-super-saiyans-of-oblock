@@ -109,6 +109,11 @@ void processCollisions(EvilShips[][] g) {
     for (int c=0;c<g[r].length;c++) {
       if (g[r][c]!=null && pShip!=null) {
         if (g[r][c].shipGetsHit(pShip.getProjectiles())) {
+          for (int i=0;i<pShip.getProjectiles().length;i++) {
+            if (pShip.getProjectiles()[i]!=null && g[r][c].shipGotHit(pShip.getProjectiles()[i])) {
+              pShip.getProjectiles()[i] = null;
+            }
+          }
           g[r][c] = null;
         }
       }
@@ -119,6 +124,7 @@ void processCollisions(EvilShips[][] g) {
     for (int c=0;c<enemyShips[r].length;c++) {
       if (pShip!=null&&enemyShips[r][c]!=null&&pShip.shipGetsHit(enemyShips[r][c].getProjectile())) {
         livesLeft--;
+        enemyShips[r][c].createAttack();
         if (livesLeft<=0) {
           loseScreen();
         }

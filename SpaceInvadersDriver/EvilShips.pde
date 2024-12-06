@@ -63,6 +63,18 @@ public class EvilShips {
     return didGetHit;
   }
   
+  public boolean shipGotHit(Projectile p) {
+    boolean didGetHit = false;
+    if (p!=null && p.getTeam()==player) {
+      int xDifference = (int)Math.abs(p.getXY().x - xLoc);
+      int yDifference = (int)Math.abs(p.getXY().y - yLoc);
+      if (xDifference <= p.getDiameter()*2 && yDifference <= p.getDiameter()*2) {
+        didGetHit = true;
+      }
+    }
+    return didGetHit;
+  }
+  
   private void createAttack() {
     p = new Projectile(xLoc,yLoc + shipDiameter/2, epSpeed,pDiameter);
   }

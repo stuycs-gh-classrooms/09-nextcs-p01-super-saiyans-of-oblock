@@ -10,7 +10,7 @@ public class PlayerShip {
   public PlayerShip(int x, int y) {
     this.x = x;
     this.y = y;
-    spots = new Projectile[30]; // have 30 projectiles
+    spots = new Projectile[5]; // have 5 projectiles
   }
   
   public void setXY(int x, int y) {
