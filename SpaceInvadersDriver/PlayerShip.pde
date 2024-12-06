@@ -63,8 +63,12 @@ public class PlayerShip {
   public void drawShip() {
     fill(playerColor);
     triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
-    /*fill(backgroundC);
-    triangle();*/ 
+    // draw projectiles
+    for (int c=0;c<spots.length;c++) {
+      if (spots[c]!=null) {
+        spots[c].drawProjectile();
+      }
+    }
   }
   
   public void moveX(int distance) {
