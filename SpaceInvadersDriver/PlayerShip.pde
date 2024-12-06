@@ -49,9 +49,6 @@ public class PlayerShip {
         if (spots[c].getXY().y <= 0) {
           spots[c] = null;
         }
-        if (spots[c]!=null) {spots[c].drawProjectile();}
-      } else {
-        createAttack();
       }
     }
   }

@@ -69,6 +69,7 @@ void animate() {
       if (enemyShips[r][c]!=null) {enemyShips[r][c].drawShip();}
     }
   }
+  // players and their projectiles
   if (pShip!=null) {pShip.drawShip();}
 }
 
