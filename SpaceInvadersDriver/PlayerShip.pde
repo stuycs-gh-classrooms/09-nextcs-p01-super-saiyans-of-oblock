@@ -39,7 +39,7 @@ public class PlayerShip {
       if (spots[c]==null) {
         spots[c] = new Projectile(x,y-pDiameter,ppSpeed,pDiameter);
         //spots[c].drawProjectile();
-        System.out.println("create attack before print");
+        //System.out.println("create attack before print");
         return;
       }
     }

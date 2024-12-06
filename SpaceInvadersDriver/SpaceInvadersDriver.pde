@@ -29,7 +29,7 @@ void setup() {
   enemyShips = new EvilShips[4][10];
   livesLeft = 4;
   initialPlayerPos = new PVector(width/2, height - shipDiameter);
-  pShip = new PlayerShip(width/2, height - shipDiameter);
+  pShip = new PlayerShip((int)random(width/2) + shipDiameter, height - shipDiameter);
   playerColor = color(#64FFC8);
   enemyColor = color(#FF1978);
   //enemyShipSpeed = 2;
@@ -49,7 +49,7 @@ void draw() {
   // if game is unpaused and not lost
   if (!isPaused && !isGameOver) {
     
-    if (frameCount%40==0) {moveEnemyShips();System.out.println("lol");}
+    if (frameCount%1==0) {moveEnemyShips();/*System.out.println("lol");*/}
     processCollisions(enemyShips);
     managePlayerAttack();
     animate();
@@ -93,7 +93,9 @@ void loseScreen() {
 
 // if game paused
 void gamePaused() {
-  
+  fill(255);
+  rect((width/2) - (width/10) - 50,50,50,300);
+  rect((width/2) + (width/10),50,50,300);
 }
 
 // process collissions of both sides
@@ -145,7 +147,7 @@ void moveEnemyShips() {
           enemyShips[r][c].moveShip(0,shipDiameter); // gotta fix this method and the encompassing
         }
         System.out.println("should have moved");
-        enemyShips[r][c].moveShip(shipDiameter * enemySpeedDirection,0);
+        enemyShips[r][c].moveShip(/*shipDiameter * */ enemySpeedDirection,0);
       }
     }
   }
