@@ -94,8 +94,10 @@ void loseScreen() {
 // if game paused
 void gamePaused() {
   fill(255);
-  rect((width/2) - (width/10) - 50,50,50,300);
-  rect((width/2) + (width/10),50,50,300);
+  //rect((width/2) - (width/10) - 50,50,50,300);
+  //rect((width/2) + (width/10),50,50,300);
+  rect(width/30,10,10,50);
+  rect((width/30)+20,10,10,50);
 }
 
 // process collissions of both sides
