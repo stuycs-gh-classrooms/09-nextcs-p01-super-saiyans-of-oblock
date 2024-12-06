@@ -52,6 +52,8 @@ void draw() {
     if (frameCount%1==0) {moveEnemyShips();/*System.out.println("lol");*/}
     processCollisions(enemyShips);
     managePlayerAttack();
+    if (frameCount % 5 == 0) {manageTheProjectiles();} // enemy projectiles
+    System.out.println(livesLeft);
     animate();
     
   } else if (isPaused) {
@@ -133,11 +135,11 @@ void moveEnemyShips() {
         if (enemyShips[r][c].getXY().x < shipDiameter) {
           enemySpeedDirection = 1;
           goDown = true;
-          System.out.println("go right");
+          //System.out.println("go right");
         } else if (enemyShips[r][c].getXY().x > width - shipDiameter) {
           enemySpeedDirection = -1;
           goDown = true;
-          System.out.println("go left");
+          //System.out.println("go left");
         }
       }
     }
@@ -148,7 +150,7 @@ void moveEnemyShips() {
         if (goDown) {
           enemyShips[r][c].moveShip(0,shipDiameter); // gotta fix this method and the encompassing
         }
-        System.out.println("should have moved");
+        //System.out.println("should have moved");
         enemyShips[r][c].moveShip(/*shipDiameter * */ enemySpeedDirection,0);
       }
     }

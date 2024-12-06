@@ -37,13 +37,15 @@ public class EvilShips {
     triangle(xLoc,yLoc+shipDiameter/4,
     xLoc+shipDiameter/2,yLoc-shipDiameter/2,
     xLoc-shipDiameter/2,yLoc-shipDiameter/2);
+    
+    if (p!=null) {p.drawProjectile();}
   }
   
   void moveShip(int xAdd, int yAdd) {
     xLoc += xAdd;
     yLoc += yAdd;
-    System.out.println(xLoc);
-    System.out.println(yLoc);
+    //System.out.println(xLoc);
+    //System.out.println(yLoc);
   }
   
   public boolean shipGetsHit(Projectile[] p) {
@@ -72,7 +74,7 @@ public class EvilShips {
         createAttack();
       }
       //p.drawProjectile();
-    } else {
+    } else if (random(1)<0.005) {
       createAttack();
     }
   }
