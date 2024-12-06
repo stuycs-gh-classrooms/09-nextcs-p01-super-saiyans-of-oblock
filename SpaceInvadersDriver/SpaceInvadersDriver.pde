@@ -55,7 +55,7 @@ void draw() {
     if (frameCount % 5 == 0) {manageTheProjectiles();} // enemy projectiles
     System.out.println(livesLeft);
     animate();
-    
+    if (livesLeft<=-1) {loseScreen();}
   } else if (isPaused) {
     gamePaused();
   } else if (isGameOver) {
