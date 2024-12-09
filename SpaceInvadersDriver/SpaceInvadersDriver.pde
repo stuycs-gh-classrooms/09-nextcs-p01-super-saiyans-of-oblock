@@ -20,7 +20,7 @@ public int enemySpeedDirection;
 public int epSpeed; // enemy projectile speed
 public int ppSpeed; // player projectile speed
 public int pDiameter; // projectile diameter
-
+public float angle; // angle of ship compared to mouse XY
 // setup
 void setup() {
   size(400,400);
@@ -52,9 +52,11 @@ void draw() {
     if (frameCount%1==0) {moveEnemyShips();/*System.out.println("lol");*/}
     processCollisions(enemyShips);
     managePlayerAttack();
+    angle = atan2(mouseY - pShip.y, mouseX - pShip.x);
     if (frameCount % 5 == 0) {manageTheProjectiles();} // enemy projectiles
     System.out.println(livesLeft);
     animate();
+    pShip.DrawAmmo();
     if (livesLeft<=-1) {loseScreen();}
   } else if (isPaused) {
     gamePaused();
@@ -184,6 +186,7 @@ void manageTheProjectiles() {
 void managePlayerAttack() {
   if (pShip!=null) {
     pShip.manageAttack();
+    pShip.DrawAmmo();
   }
 }
 

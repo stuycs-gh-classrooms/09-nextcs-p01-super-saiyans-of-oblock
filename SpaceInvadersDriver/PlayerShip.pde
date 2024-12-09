@@ -33,7 +33,18 @@ public class PlayerShip {
     }
     return isHit;
   }
-  
+  public void DrawAmmo(){ // draws the current player ammo on the side
+   int x = width - 20;
+   int y = height - 100;
+   rectMode(CORNERS);
+   for(int i = 0;i <spots.length;i++){
+     if (spots[i] == null){
+     fill(255);
+   rect(x,y,x+10,y+10);
+   y += 15;
+   //println(spots.length);
+   }}
+  }
   public void createAttack() {
     for (int c=0;c<spots.length;c++) {
       if (spots[c]==null) {
@@ -60,9 +71,20 @@ public class PlayerShip {
     return spots;
   }
   
-  public void drawShip() {
+  public void drawShip() { // tried to implement turning and directional aiming, went badly lol
     fill(playerColor);
-    triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
+    //translate(x,y);
+    float Rx = x+cos(angle)*30;
+    float Ry = y+sin(angle)*30;
+    float Rx2 = x+cos(angle+PI/2)*5;
+    float Ry2 = x+sin(angle+PI/2)*5;
+    float Rx3 = x+cos(angle-PI/2)*5;
+    float Ry3 = x+sin(angle-PI/2)*5;
+    //println(sin(angle)*30);
+   triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
+    //triangle(Rx,Ry-shipDiameter/2,Rx+shipDiameter/2,Ry+shipDiameter/2,Rx-shipDiameter/2,Ry+shipDiameter/2);
+    //triangle(Rx,Ry,Rx2,Ry2,Rx3,Ry3);
+    //translate(-x,-y);
     // draw projectiles
     for (int c=0;c<spots.length;c++) {
       if (spots[c]!=null) {
