@@ -33,7 +33,7 @@ public class PlayerShip {
     }
     return isHit;
   }
-  public void DrawAmmo(){ // draws the current player ammo on the side
+  public void drawAmmo(){ // draws the current player ammo on the side
    int x = width - 20;
    int y = height - 100;
    rectMode(CORNERS);
@@ -81,9 +81,9 @@ public class PlayerShip {
     float Rx3 = x+cos(angle-PI/2)*5;
     float Ry3 = x+sin(angle-PI/2)*5;
     //println(sin(angle)*30);
-   triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
-    //triangle(Rx,Ry-shipDiameter/2,Rx+shipDiameter/2,Ry+shipDiameter/2,Rx-shipDiameter/2,Ry+shipDiameter/2);
-    //triangle(Rx,Ry,Rx2,Ry2,Rx3,Ry3);
+   //triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
+  //triangle(Rx,Ry-shipDiameter/2,Rx+shipDiameter/2,Ry+shipDiameter/2,Rx-shipDiameter/2,Ry+shipDiameter/2);
+    triangle(Rx,Ry,Rx2,Ry2,Rx3,Ry3);
     //translate(-x,-y);
     // draw projectiles
     for (int c=0;c<spots.length;c++) {

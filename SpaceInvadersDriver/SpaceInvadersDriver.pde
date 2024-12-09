@@ -56,7 +56,7 @@ void draw() {
     if (frameCount % 5 == 0) {manageTheProjectiles();} // enemy projectiles
     System.out.println(livesLeft);
     animate();
-    pShip.DrawAmmo();
+    pShip.drawAmmo();
     if (livesLeft<=-1) {loseScreen();}
   } else if (isPaused) {
     gamePaused();
@@ -186,7 +186,7 @@ void manageTheProjectiles() {
 void managePlayerAttack() {
   if (pShip!=null) {
     pShip.manageAttack();
-    pShip.DrawAmmo();
+    pShip.drawAmmo();
   }
 }
 
