@@ -72,19 +72,35 @@ public class PlayerShip {
   }
   
   public void drawShip() { // tried to implement turning and directional aiming, went badly lol
+    
     fill(playerColor);
-    //translate(x,y);
-    float Rx = x+cos(angle)*30;
-    float Ry = y+sin(angle)*30;
-    float Rx2 = x+cos(angle+PI/2)*5;
-    float Ry2 = x+sin(angle+PI/2)*5;
-    float Rx3 = x+cos(angle-PI/2)*5;
-    float Ry3 = x+sin(angle-PI/2)*5;
-    //println(sin(angle)*30);
-   //triangle(x,y-shipDiameter/2,x+shipDiameter/2,y+shipDiameter/2,x-shipDiameter/2,y+shipDiameter/2);
-  //triangle(Rx,Ry-shipDiameter/2,Rx+shipDiameter/2,Ry+shipDiameter/2,Rx-shipDiameter/2,Ry+shipDiameter/2);
-    triangle(Rx,Ry,Rx2,Ry2,Rx3,Ry3);
-    //translate(-x,-y);
+
+    // calculate the angle to the mouse
+    angle = atan2(mouseY - pShip.y, mouseX - pShip.x);
+
+    // ship geometry parameters
+    float tipLength = 30;  // Distance from center to the tip
+    float baseWidth = 10;  // Half the width of the base
+
+    // calculate the vertices
+    float tipX = pShip.x + cos(angle) * tipLength;  // Tip of the triangle
+    float tipY = pShip.y + sin(angle) * tipLength;
+
+    float leftBaseX = pShip.x + cos(angle + PI / 2) * baseWidth;
+    float leftBaseY = pShip.y + sin(angle + PI / 2) * baseWidth;
+
+    float rightBaseX = pShip.x + cos(angle - PI / 2) * baseWidth;
+    float rightBaseY = pShip.y + sin(angle - PI / 2) * baseWidth;
+
+    // debugging
+   // println(degrees(angle));
+   // println(tipX + ", " + tipY );
+   // println(leftBaseX + ", " + leftBaseY );
+  //  println( rightBaseX + ", " + rightBaseY );
+
+    // draw the triangle
+    triangle(tipX, tipY, leftBaseX, leftBaseY, rightBaseX, rightBaseY);
+
     // draw projectiles
     for (int c=0;c<spots.length;c++) {
       if (spots[c]!=null) {
