@@ -21,6 +21,7 @@ public int epSpeed; // enemy projectile speed
 public int ppSpeed; // player projectile speed
 public int pDiameter; // projectile diameter
 public float angle; // angle of ship compared to mouse XY
+public int waveNum; // current wave #
 // setup
 void setup() {
   size(400,400);
@@ -41,6 +42,7 @@ void setup() {
   background(backgroundC);
   epSpeed = 5;
   ppSpeed = -5;
+  waveNum = 1;
   frameRate(60);
 }
 
@@ -52,20 +54,42 @@ void draw() {
     if (frameCount%1==0) {moveEnemyShips();/*System.out.println("lol");*/}
     processCollisions(enemyShips);
     managePlayerAttack();
-    angle = atan2(mouseY - pShip.y, mouseX - pShip.x);
+    //angle = atan2(mouseY - pShip.y, mouseX - pShip.x);
     if (frameCount % 5 == 0) {manageTheProjectiles();} // enemy projectiles
     System.out.println(livesLeft);
     animate();
     pShip.drawAmmo();
+    if (frameCount % 10 == 0){
+    int count = 0;
+    for (int i = 0; i < enemyShips.length; i ++){
+     for (int s = 0; s < enemyShips[i].length; s++){
+       if(enemyShips[i][s] != null){
+         count ++;
+       }
+     }
+    }
+    if (count == 0){
+     waveNum ++;
+     newWave(); 
+    }
+  }
     if (livesLeft<=-1) {loseScreen();}
   } else if (isPaused) {
     gamePaused();
   } else if (isGameOver) {
+    
     loseScreen();
+    
   }
 }
 
 // animate background with stars and stuff
+void newWave(){
+  textSize(20);
+  text("Wave "+ waveNum, width/2, height/2);
+  enemyShips = new EvilShips[4][10];
+  spawnEnemyShips(enemyShips);
+}
 void animate() {
   background(backgroundC);
   for (int r=0;r<enemyShips.length;r++) {
@@ -227,5 +251,5 @@ void keyPressed() {
 
 // mouse input
 void mousePressed() {
-  
+  pShip.createAttack();
 }

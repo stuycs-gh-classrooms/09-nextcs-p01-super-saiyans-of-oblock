@@ -59,8 +59,8 @@ public class PlayerShip {
   public void manageAttack() {
     for (int c=0;c<spots.length;c++) {
       if (spots[c]!=null) {
-        spots[c].move();
-        if (spots[c].getXY().y <= 0) {
+        spots[c].playerShoot();
+        if (spots[c].getXY().y <= 0 || spots[c].getXY().x <= 0 || spots[c].getXY().x >= width) {
           spots[c] = null;
         }
       }
@@ -93,7 +93,7 @@ public class PlayerShip {
     float rightBaseY = pShip.y + sin(angle - PI / 2) * baseWidth;
 
     // debugging
-   // println(degrees(angle));
+    println(degrees(angle));
    // println(tipX + ", " + tipY );
    // println(leftBaseX + ", " + leftBaseY );
   //  println( rightBaseX + ", " + rightBaseY );
